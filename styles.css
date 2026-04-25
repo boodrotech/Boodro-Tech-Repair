@@ -1,0 +1,688 @@
+:root {
+  --bg: #07111d;
+  --panel: rgba(10, 20, 30, 0.82);
+  --panel-strong: rgba(8, 18, 25, 0.92);
+  --line: rgba(112, 255, 166, 0.25);
+  --text: #f5fffb;
+  --muted: #afc8bb;
+  --neon: #7dff63;
+  --neon-strong: #34f5a3;
+  --warning: #b9ff57;
+  --shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: "Rajdhani", sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(75, 140, 255, 0.18), transparent 35%),
+    linear-gradient(180deg, #030815 0%, #07111d 45%, #03070d 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.page-shell {
+  min-height: 100vh;
+}
+
+.hero {
+  position: relative;
+  padding: 1.4rem clamp(1.25rem, 3vw, 2.5rem) 5rem;
+  background:
+    linear-gradient(180deg, rgba(2, 6, 16, 0.25), rgba(2, 8, 16, 0.88)),
+    linear-gradient(90deg, rgba(2, 10, 16, 0.92) 0%, rgba(4, 14, 22, 0.65) 45%, rgba(4, 14, 22, 0.15) 100%),
+    url("boodro-tech-hero.png") center/cover no-repeat;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 180px;
+  background: linear-gradient(180deg, transparent, rgba(3, 7, 13, 0.96));
+  pointer-events: none;
+}
+
+.site-nav,
+.hero-content,
+.section,
+.info-strip {
+  position: relative;
+  z-index: 1;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 auto 4rem;
+  max-width: 1180px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+}
+
+.brand-lockup {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.45rem 0.55rem 0.5rem;
+  border: 1px solid rgba(125, 255, 99, 0.16);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(5, 16, 23, 0.52), rgba(5, 16, 23, 0.2));
+  box-shadow:
+    0 0 30px rgba(125, 255, 99, 0.08),
+    inset 0 0 18px rgba(125, 255, 99, 0.04);
+  backdrop-filter: blur(10px);
+}
+
+.brand-word {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.01em;
+  color: var(--neon);
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 4px rgba(125, 255, 99, 0.24),
+    0 0 10px rgba(125, 255, 99, 0.12);
+}
+
+.brand-word > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-word > span:not(.brand-alien) {
+  margin-inline: -0.015em;
+}
+
+.brand-alien {
+  display: inline-flex;
+  width: 0.9em;
+  height: 0.92em;
+  margin-left: -0.1em;
+  margin-right: -0.07em;
+  transform: translateY(0);
+}
+
+.brand-alien svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 0 6px rgba(125, 255, 99, 0.18));
+}
+
+.brand-subline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 0.05rem;
+}
+
+.brand-line {
+  width: clamp(1.3rem, 3vw, 2rem);
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  box-shadow: 0 0 14px rgba(125, 255, 99, 0.25);
+}
+
+.brand-repair {
+  color: #f4fff9;
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(0.88rem, 1.9vw, 1.45rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.brand-tagline {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: var(--warning);
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(0.46rem, 1vw, 0.7rem);
+  font-weight: 700;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 1.05rem;
+}
+
+.nav-links a {
+  padding: 0.45rem 0.8rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  border-color: var(--line);
+  background: rgba(125, 255, 99, 0.08);
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.5fr 0.9fr;
+  gap: 2rem;
+  align-items: end;
+  margin: 0 auto;
+  max-width: 1180px;
+  min-height: 70vh;
+}
+
+.hero-copy {
+  max-width: 720px;
+}
+
+.eyebrow,
+.panel-label,
+.strip-label {
+  margin: 0 0 0.8rem;
+  color: var(--warning);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.82rem;
+}
+
+.hero h1,
+.section h2,
+.hero-card h2 {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: 0.94;
+  text-transform: uppercase;
+  color: #f5fffb;
+  text-shadow: 0 0 24px rgba(125, 255, 99, 0.14);
+}
+
+.hero-copy > .eyebrow {
+  color: var(--warning);
+}
+
+.hero-text,
+.section-copy,
+.showcase-copy p,
+.service-card p,
+.contact-card p {
+  font-size: 1.2rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.8rem 0 1.3rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0.85rem 1.35rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.92rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  background: linear-gradient(135deg, var(--neon) 0%, var(--neon-strong) 100%);
+  color: #03110c;
+  box-shadow: 0 0 24px rgba(52, 245, 163, 0.28);
+}
+
+.button-secondary {
+  background: rgba(8, 18, 25, 0.55);
+  border-color: rgba(125, 255, 99, 0.25);
+  color: var(--text);
+}
+
+.hero-platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.4rem 0 0;
+}
+
+.platform-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 54px;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(5, 16, 24, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.platform-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.platform-name {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.platform-playstation .platform-icon {
+  background: rgba(0, 94, 255, 0.18);
+  color: #7ab6ff;
+  box-shadow: inset 0 0 12px rgba(0, 94, 255, 0.18);
+}
+
+.platform-xbox .platform-icon {
+  background: rgba(75, 214, 96, 0.16);
+  color: #7dff63;
+  box-shadow: inset 0 0 12px rgba(75, 214, 96, 0.16);
+}
+
+.platform-nintendo .platform-icon {
+  background: rgba(255, 84, 84, 0.15);
+  color: #ff8f8f;
+  box-shadow: inset 0 0 12px rgba(255, 84, 84, 0.14);
+}
+
+.hero-card,
+.service-card,
+.device-card,
+.contact-card,
+.contact-form,
+.promise-card,
+.reviews-panel,
+.info-strip,
+.showcase-copy {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.hero-card {
+  justify-self: end;
+  max-width: 360px;
+  padding: 1.5rem;
+  border-radius: 28px;
+}
+
+.hero-card p {
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.contact-lines {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1.3rem;
+}
+
+.contact-lines a,
+.contact-value {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--neon);
+  word-break: break-word;
+}
+
+.info-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: -2rem auto 0;
+  padding: 1.2rem;
+  max-width: 1180px;
+  border-radius: 24px;
+}
+
+.info-strip strong {
+  font-size: 1.15rem;
+}
+
+.section {
+  margin: 0 auto;
+  max-width: 1180px;
+  padding: 5rem 1.25rem 0;
+}
+
+.section-heading {
+  max-width: 720px;
+  margin-bottom: 2rem;
+}
+
+.section h2 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+.promise-section {
+  padding-top: 2rem;
+}
+
+.promise-card {
+  position: relative;
+  padding: 2rem;
+  border-radius: 28px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top right, rgba(125, 255, 99, 0.2), transparent 30%),
+    linear-gradient(135deg, rgba(18, 34, 24, 0.96), rgba(7, 18, 24, 0.96));
+}
+
+.promise-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(125, 255, 99, 0.42);
+  border-radius: 28px;
+  pointer-events: none;
+}
+
+.promise-card h2 {
+  margin: 0 0 0.8rem;
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  color: var(--neon);
+  text-transform: uppercase;
+  text-shadow: 0 0 24px rgba(125, 255, 99, 0.24);
+}
+
+.promise-card p:last-child {
+  margin: 0;
+  max-width: 760px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.service-grid,
+.device-grid,
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.service-card,
+.device-card,
+.contact-card {
+  padding: 1.4rem;
+  border-radius: 24px;
+}
+
+.service-card h3,
+.device-card h3 {
+  margin: 0 0 0.6rem;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.25rem;
+}
+
+.device-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.device-card ul {
+  margin: 0.9rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.featured-review-card {
+  padding: 1.75rem;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(13, 25, 34, 0.88), rgba(6, 16, 24, 0.92));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.stars {
+  margin-bottom: 1rem;
+  color: var(--warning);
+  font-size: 1.4rem;
+  letter-spacing: 0.2em;
+}
+
+.featured-review-card blockquote {
+  margin: 0;
+  max-width: 760px;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.review-credit {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.showcase {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.showcase-image-wrap {
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.showcase-copy {
+  padding: 1.8rem;
+  border-radius: 28px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 28px;
+}
+
+.reviews-panel {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 28px;
+}
+
+.reviews-panel h3 {
+  margin: 0 0 0.75rem;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.4rem;
+}
+
+.reviews-panel p {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 0.45rem;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(125, 255, 99, 0.18);
+  border-radius: 16px;
+  background: var(--panel-strong);
+  color: var(--text);
+  font: inherit;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: 2px solid rgba(125, 255, 99, 0.28);
+  border-color: rgba(125, 255, 99, 0.5);
+}
+
+.device-picker {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.site-footer {
+  padding: 3rem 1.25rem 2rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+@media (max-width: 920px) {
+  .hero-content,
+  .showcase,
+  .service-grid,
+  .device-grid,
+  .contact-grid,
+  .info-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .device-picker {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-card {
+    justify-self: stretch;
+    max-width: none;
+  }
+
+  .hero {
+    padding-bottom: 4rem;
+    background-position: 62% center;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+  }
+
+  .brand-lockup {
+    padding: 0.35rem 0.45rem 0.45rem;
+  }
+
+  .brand-subline {
+    gap: 0.35rem;
+  }
+
+  .hero {
+    padding-inline: 1rem;
+  }
+
+  .section {
+    padding-inline: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2.7rem;
+  }
+
+  .hero-text,
+  .section-copy,
+  .showcase-copy p,
+  .service-card p,
+  .contact-card p {
+    font-size: 1.05rem;
+  }
+}
