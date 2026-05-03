@@ -95,41 +95,50 @@ function toggleOtherDeviceField(category, model) {
   }
 }
 
-emailLink.href = `mailto:${businessEmail}`;
-emailLink.textContent = businessEmail;
-businessEmailLabel.textContent = businessEmail;
-businessEmailLabel.href = `mailto:${businessEmail}`;
+if (emailLink) {
+  emailLink.href = `mailto:${businessEmail}`;
+  emailLink.textContent = businessEmail;
+}
 
-deviceCategory.addEventListener("change", () => {
-  populateModels(deviceCategory.value);
-});
+if (businessEmailLabel) {
+  businessEmailLabel.textContent = businessEmail;
+  businessEmailLabel.href = `mailto:${businessEmail}`;
+}
 
-deviceModel.addEventListener("change", () => {
-  toggleOtherDeviceField(deviceCategory.value, deviceModel.value);
-});
+if (deviceCategory && deviceModel) {
+  deviceCategory.addEventListener("change", () => {
+    populateModels(deviceCategory.value);
+  });
 
-contactForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+  deviceModel.addEventListener("change", () => {
+    toggleOtherDeviceField(deviceCategory.value, deviceModel.value);
+  });
+}
 
-  const formData = new FormData(contactForm);
-  const name = formData.get("name");
-  const senderEmail = formData.get("senderEmail");
-  const category = formData.get("deviceCategory");
-  const model = formData.get("deviceModel");
-  const otherDevice = formData.get("otherDevice");
-  const message = formData.get("message");
-  const useCustomName = category === "Other" || String(model).startsWith("Other");
-  const specificDevice = useCustomName ? otherDevice : model;
-  const selectedDevice = `${category} - ${specificDevice}`;
+if (contactForm) {
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  const subject = encodeURIComponent(`Repair Request: ${selectedDevice}`);
-  const body = encodeURIComponent(
-    `Name: ${name}\n` +
-    `Customer Email: ${senderEmail}\n` +
-    `Device Category: ${category}\n` +
-    `Specific Model: ${specificDevice}\n\n` +
-    `Issue:\n${message}`
-  );
+    const formData = new FormData(contactForm);
+    const name = formData.get("name");
+    const senderEmail = formData.get("senderEmail");
+    const category = formData.get("deviceCategory");
+    const model = formData.get("deviceModel");
+    const otherDevice = formData.get("otherDevice");
+    const message = formData.get("message");
+    const useCustomName = category === "Other" || String(model).startsWith("Other");
+    const specificDevice = useCustomName ? otherDevice : model;
+    const selectedDevice = `${category} - ${specificDevice}`;
 
-  window.location.href = `mailto:${businessEmail}?subject=${subject}&body=${body}`;
-});
+    const subject = encodeURIComponent(`Repair Request: ${selectedDevice}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\n` +
+      `Customer Email: ${senderEmail}\n` +
+      `Device Category: ${category}\n` +
+      `Specific Model: ${specificDevice}\n\n` +
+      `Issue:\n${message}`
+    );
+
+    window.location.href = `mailto:${businessEmail}?subject=${subject}&body=${body}`;
+  });
+}
