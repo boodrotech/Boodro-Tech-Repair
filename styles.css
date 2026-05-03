@@ -83,100 +83,11 @@ img {
   align-items: center;
 }
 
-.brand-lockup {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.15rem;
-  padding: 0.45rem 0.55rem 0.5rem;
-  border: 1px solid rgba(125, 255, 99, 0.16);
-  border-radius: 18px;
-  background: linear-gradient(180deg, rgba(5, 16, 23, 0.52), rgba(5, 16, 23, 0.2));
-  box-shadow:
-    0 0 30px rgba(125, 255, 99, 0.08),
-    inset 0 0 18px rgba(125, 255, 99, 0.04);
-  backdrop-filter: blur(10px);
-}
-
-.brand-word {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.01em;
-  color: var(--neon);
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(1.8rem, 4vw, 3.4rem);
-  font-weight: 900;
-  line-height: 0.92;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-shadow:
-    0 0 4px rgba(125, 255, 99, 0.24),
-    0 0 10px rgba(125, 255, 99, 0.12);
-}
-
-.brand-word > span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.brand-word > span:not(.brand-alien) {
-  margin-inline: -0.015em;
-}
-
-.brand-alien {
-  display: inline-flex;
-  width: 0.9em;
-  height: 0.92em;
-  margin-left: -0.1em;
-  margin-right: -0.07em;
-  transform: translateY(0);
-}
-
-.brand-alien svg {
-  width: 100%;
-  height: 100%;
+.brand img {
+  width: clamp(420px, 56vw, 840px);
+  height: auto;
   display: block;
-  overflow: visible;
-  filter: drop-shadow(0 0 6px rgba(125, 255, 99, 0.18));
-}
-
-.brand-subline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-  margin-top: 0.05rem;
-}
-
-.brand-line {
-  width: clamp(1.3rem, 3vw, 2rem);
-  height: 3px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent, var(--neon), transparent);
-  box-shadow: 0 0 14px rgba(125, 255, 99, 0.25);
-}
-
-.brand-repair {
-  color: #f4fff9;
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(0.88rem, 1.9vw, 1.45rem);
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.brand-tagline {
-  display: block;
-  width: 100%;
-  text-align: center;
-  color: var(--warning);
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(0.46rem, 1vw, 0.7rem);
-  font-weight: 700;
-  letter-spacing: 0.36em;
-  text-transform: uppercase;
+  filter: drop-shadow(0 0 22px rgba(125, 255, 99, 0.14));
 }
 
 .nav-links {
@@ -199,10 +110,7 @@ img {
 }
 
 .hero-content {
-  display: grid;
-  grid-template-columns: 1.5fr 0.9fr;
-  gap: 2rem;
-  align-items: end;
+  display: block;
   margin: 0 auto;
   max-width: 1180px;
   min-height: 70vh;
@@ -623,7 +531,7 @@ img {
 }
 
 .site-footer p {
-  margin: 0;
+  margin: 0.2rem 0;
 }
 
 @media (max-width: 920px) {
@@ -640,11 +548,6 @@ img {
     grid-template-columns: 1fr;
   }
 
-  .hero-card {
-    justify-self: stretch;
-    max-width: none;
-  }
-
   .hero {
     padding-bottom: 4rem;
     background-position: 62% center;
@@ -658,12 +561,8 @@ img {
     margin-bottom: 2.5rem;
   }
 
-  .brand-lockup {
-    padding: 0.35rem 0.45rem 0.45rem;
-  }
-
-  .brand-subline {
-    gap: 0.35rem;
+  .brand img {
+    width: clamp(240px, 78vw, 520px);
   }
 
   .hero {

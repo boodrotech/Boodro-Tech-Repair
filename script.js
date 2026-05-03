@@ -1,4 +1,4 @@
-const businessEmail = "boodrotechrepair@gmail.com";
+const businessEmail = "boodro@boodrotechrepair.com";
 
 const emailLink = document.getElementById("email-link");
 const businessEmailLabel = document.getElementById("business-email");
